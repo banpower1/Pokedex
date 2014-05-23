@@ -18,7 +18,7 @@
 		<link>
 			<name>.settings/veekun-pokedex.sqlite</name>
 			<type>1</type>
-			<location>C:/Games/Pokémon Database/Pokedex/External items/veekun-pokedex.sqlite</location>
+			<locationURI>PROJECT_LOC/External%20items/veekun-pokedex.sqlite</locationURI>
 		</link>
 	</linkedResources>
 </projectDescription>

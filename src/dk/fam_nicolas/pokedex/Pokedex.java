@@ -1,3 +1,6 @@
+/**
+ * Copyright 2014 Bertram André Nicolas
+ */
 package dk.fam_nicolas.pokedex;
 import java.util.*;
 
@@ -13,6 +16,10 @@ public class Pokedex
 	private String userInput;
 	private String[] userInputArray;
 	private boolean keepGoing;
+	
+	/**
+	 * The Pokedex in text format, handles all input and calls for the pokedex
+	 */
 	public Pokedex()
 	{
 		keepGoing = true;
@@ -24,7 +31,13 @@ public class Pokedex
 			userInputArray = userInput.toLowerCase().split(" ");
 			switch(userInputArray[0])
 			{
-				case "pinfo": System.out.println("We registered the Pinfo command :D");
+				case "pinfo": try{pokemonInfo(new Pokemon(userInputArray[1]));} catch (eNotAPokemon e){System.out.println("Invalid pokemon name, please try again");}
+					break;
+				case "ptype": try{pokemonType(new Pokemon(userInputArray[1]));} catch (eNotAPokemon e){System.out.println("Invalid pokemon name, please try again");}
+					break;
+				case "pweak": try{pokemonWeakness(new Pokemon(userInputArray[1]));} catch (eNotAPokemon e){System.out.println("Invalid pokemon name, please try again");}
+					break;
+				case "help": System.out.println("The help command hasn't been filled yet, please annoy the developer into making one");
 					break;
 				case "exit": keepGoing = false;
 						System.out.println("Thank you for using Banpower1's Pokedex, have a nice day.");
@@ -38,23 +51,69 @@ public class Pokedex
 	}
 
 	/**
-	 * @return list of all Pokemons
+	 * prints basic information about the pokemon
+	 * @param poke a pokemon
 	 */
-	public ArrayList<Pokemon> Pokemons()
+	public void pokemonInfo(Pokemon poke)
 	{
-		ArrayList<ArrayList<Object>> schema = dbc.request("SELECT id, identifier FROM pokemon");
-		ArrayList<Pokemon> temp = new ArrayList<Pokemon>();
-		
-		for(ArrayList<Object> row:schema)
-		{
-			temp.add(new Pokemon((int)row.get(0), (String)row.get(1)));
-		}
-		
-		return temp;
+		System.out.print("");
 	}
 	
-	public Pokemon PokemonInfo(String pokeName)
+	/**
+	 * prints information about the pokemons type and its weaknesses
+	 * @param poke a pokemon
+	 */
+	public void pokemonType(Pokemon poke)
 	{
-		return new Pokemon();
+		String pokemonTypeMessage;
+		pokemonTypeMessage = "[" + poke.getDexNumber() + "]" + Utilities.capitalize(poke.getName()) + " is a " + Utilities.capitalize(poke.getType().getType1());
+		if (poke.getType().getType2() != null)
+		{
+			pokemonTypeMessage += " and " + Utilities.capitalize(poke.getType().getType2());
+		}
+		System.out.println(pokemonTypeMessage + " type");
+		
+		pokemonWeakness(poke);
+	}	
+
+	/**
+	 * prints information about a pokemons weaknesses
+	 * @param poke a pokemon
+	 */
+	public void pokemonWeakness(Pokemon poke)
+	{
+		System.out.println("Defensive matchups:");
+		ArrayList<TypeEfficacy> defenses = poke.getType().getDefences();
+		ArrayList<String> defenseResult = new ArrayList<String>();
+		for(TypeEfficacy efficacy:defenses)
+		{
+			defenseResult.add(efficacy.getPrintable());
+		}
+
+		int longest = 0;
+		for(String i:defenseResult)
+		{
+			if(i.length() > longest)
+			{
+				longest = i.length();
+			}
+		}
+
+		ArrayList<String> defensePrint = new ArrayList<String>(); 
+		for(String i:defenseResult)
+		{
+			int spaceToAdd = longest - i.length();
+			String space = "";
+			for(int j = 0; j < spaceToAdd; j++)
+			{
+				space = space + " ";
+			}
+			defensePrint.add(i.substring(0, i.length()-5) + space + i.substring(i.length()-5, i.length()));
+		}
+
+		for(String i:defensePrint)
+		{
+			System.out.println(i);
+		}
 	}
 }

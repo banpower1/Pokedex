@@ -35,17 +35,26 @@ public class TypeEfficacy
 		this.efficacy = effecacyAsInteger.floatValue() / 100f;		
 		this.type = new Type(type);
 	}
-	
+
+	/**
+	 * To get a printable string of the types
+	 * @return a string suited for printing the type
+	 */
 	String getPrintable()
 	{
-		return "" + type.getType1() + efficacy;  
+		return "" + Utilities.capitalize(type.getType1()) + " x" + efficacy;  
 	}
 	
+	/**
+	 * @return get the type
+	 */
 	Type getType()
 	{
 		return type;
 	}
-
+	/**
+	 * @return the efficacy as a float, 1 == 100%
+	 */
 	float getEfficacy()
 	{
 		return efficacy;
