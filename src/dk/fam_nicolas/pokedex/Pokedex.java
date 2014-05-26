@@ -56,7 +56,8 @@ public class Pokedex
 	 */
 	public void pokemonInfo(Pokemon poke)
 	{
-		System.out.print("");
+		System.out.print(Utilities.capitalize(poke.getName()) + ": [Dex: #" + poke.getDexNumber() + "] [Type: " + poke.getType().getPrintable() + "] ");
+		//System.out.print("Bulbasaur: [Dex: #1] [Type: Grass/Poison] [Abilities: Overgrow/Chlorophyll (DW)] [Evolution: Ivysaur/Level 16]");
 	}
 	
 	/**
@@ -66,12 +67,8 @@ public class Pokedex
 	public void pokemonType(Pokemon poke)
 	{
 		String pokemonTypeMessage;
-		pokemonTypeMessage = "[" + poke.getDexNumber() + "]" + Utilities.capitalize(poke.getName()) + " is a " + Utilities.capitalize(poke.getType().getType1());
-		if (poke.getType().getType2() != null)
-		{
-			pokemonTypeMessage += " and " + Utilities.capitalize(poke.getType().getType2());
-		}
-		System.out.println(pokemonTypeMessage + " type");
+		pokemonTypeMessage = Utilities.capitalize(poke.getName()) + " is a " + poke.getType().getPrintable() + " type";
+		System.out.println(pokemonTypeMessage);
 		
 		pokemonWeakness(poke);
 	}	

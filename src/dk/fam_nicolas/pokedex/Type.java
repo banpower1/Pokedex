@@ -130,7 +130,7 @@ public class Type
 		}
 		else
 		{
-			return Utilities.capitalize(type1) + " " + Utilities.capitalize(type2);
+			return Utilities.capitalize(type1) + "/" + Utilities.capitalize(type2);
 		}
 	}
 	

@@ -1,0 +1,23 @@
+http://www.soredemo.net/bot/help.php
+bulbapedia irc channel:
+
+!ptype <pokémon> : offensive matchups (damage multipliers from attacks vs pokémon)
+!ptype bulbasaur
+> Bulbasaur (Grass/Poison) defensive matchups: 0.25x: Grass :: 0.5x: Fighting, Water, Electric, Fairy :: 2x: Flying, Fire, Psychic, Ice
+^ each type is colored according to "logic" coloring (white/close to white colors have black background), numbers are in bold
+
+!ptype <type> : offensive matchups (damage multipliers from attacks vs pokémon)
+!ptype grass
+>Grass offensive matchups: 0.5x: Flying, Poison, Bug, Steel, Fire, Grass, Dragon :: 2x: Ground, Rock, Water
+
+!ptype <type> -p : returns list of pokémons that suit the type specified (multiple types can be specified for dual type pokémons) 
+!ptype grass -p
+>There are 33 Grass type pokemon: Tangela, Chikorita, Bayleef, Meganium, Bellossom, Sunkern, Sunflora, Treecko, Grovyle, Sceptile, Seedot, Shroomish, Cacnea, Turtwig, Grotle, Cherubi, Cherrim, Carnivine, Tangrowth, Leafeon, Shaymin, Snivy, Servine, Serperior, Pansage, Simisage, Petilil, Lilligant, Maractus, Chespin, Quilladin, Skiddo, Gogoat
+
+!ptype <attack> <pokémon> : damage multiplier for the specific attack vs pokémon
+!ptype tackle
+>Tackle (Normal) offensive matchups: 0x: Ghost :: 0.5x: Rock, Steel
+
+!pinfo <pokémon>
+>[Pokemon: Bulbasaur/Fushigidane] [Dex: #1] [Type: Grass/Poison] [Abilities: Overgrow/Chlorophyll (DW)] [Evolution: Ivysaur/Level 16] [Location: Lumiose City - Professor Sycamore] [HP: 45] [Atk: 49] [Def: 49] [Sp. Atk: 65] [Sp. Def: 65] [Speed: 45] [Total: 318]
+^ numbers bold, location+abilities+self name+evolution name bold
