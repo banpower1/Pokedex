@@ -95,7 +95,20 @@ public class Type
 			}
 		}
 		
-		return output;
+		// Empties out half if we have a double sized list because of the double type
+		if(type2 == null)
+		{
+			return output;
+		}
+		else
+		{
+			int preferableSize = output.size()/2;
+			while (output.size() > preferableSize)
+			{
+				output.remove(output.size()-1);
+			}
+			return output;
+		}
 	}
 	
 	/**
